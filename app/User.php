@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'photo', 'phone_number', 'gender', 'specialization', 'educational_level', 'address', 'id_cms_privileges',
+        'name', 'email', 'password', 'photo', 'phone_number', 'gender', 'specialization', 'educational_level', 'address', 'id_cms_privileges', 'created_by',
     ];
 
     protected $appends = ['avatar_url'];
