@@ -160,6 +160,10 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
+      unset($request->user()['id_cms_privileges']);
+      unset($request->user()['created_by']);
+      unset($request->user()['money']);
+      unset($request->user()['age']);
         return response()->json($request->user());
     }
 }
