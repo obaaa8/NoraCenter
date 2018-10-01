@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use CRUDBooster;
 use NoraCenter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class Website extends Controller {
 
@@ -92,6 +94,19 @@ class Website extends Controller {
     ]);
 
     CRUDBooster::redirect(url('to_connect'),'تم إرسال رسالتك بنجاح','success');
+  }
+  public function addContact(Request $request)
+  {
+    DB::table('contact_forms')->insert([
+      'name' => Auth::user()->name,
+      'email' =>  Auth::user()->email,
+      'subject' =>  $request->subject,
+      'contact_message' =>  $request->contact_message,
+    ]);
+    return response()->json([
+        'message' => 'تم إرسال رسالتك بنجاح',
+    ], 201);
+
   }
 
 }
